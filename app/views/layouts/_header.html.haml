@@ -1,0 +1,9 @@
+%nav.nav.navbar-inverse.navbar-static-top
+  .container
+    .navbar-header
+      =link_to "Book Shop", root_path, class: "navbar-brand"
+      %ul.nav.navbar-nav
+        %li{ class: active?(about_path) }
+          = link_to "About", about_path
+        %li{ class: active?(contact_path) }
+          = link_to "Contact", contact_path

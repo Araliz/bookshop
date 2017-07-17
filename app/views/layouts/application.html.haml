@@ -9,5 +9,12 @@
   %body
     %header
       =render 'layouts/header'
-    .container
-      = yield
+    .container#main
+      .row
+        .col-md-3
+          .list-group
+            <a href="#" class="list-group-item">Category 1</a>
+            <a href="#" class="list-group-item">Category 2</a>
+            <a href="#" class="list-group-item">Category 3</a>
+        .col-md-9
+          = yield

@@ -1,3 +1,15 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+
+.container#main {
+    // background-color: #2c3e50;
+    margin-top: 20px;
+}
+#book-info-top {
+  border:0px solid gray;
+}
+.title-attr {
+  color: #949a9d;
+}

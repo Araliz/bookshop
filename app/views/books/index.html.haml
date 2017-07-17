@@ -1,0 +1,14 @@
+%h1 Cos tam
+- (1..9).each_slice(3) do |slice|
+  .row
+    - slice.each do |book|
+      .col-md-4
+        .thumbnail
+          =link_to book_path(1) do
+            =image_tag Faker::Placeholdit.image('140x200', 'jpg')
+          .caption
+            %h4.pull-right 24.00$
+            %h4 First product
+            %p See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.
+            =link_to "#", class: "btn btn-primary" do
+              =fa_icon "shopping-cart",text: "Add to cart"

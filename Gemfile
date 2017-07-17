@@ -24,9 +24,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem "font-awesome-rails"
 gem 'haml-rails'
 gem 'i18n', '~> 0.8.6'
-
+gem 'faker'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

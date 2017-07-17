@@ -13,8 +13,7 @@
       .row
         .col-md-3
           .list-group
-            <a href="#" class="list-group-item">Category 1</a>
-            <a href="#" class="list-group-item">Category 2</a>
-            <a href="#" class="list-group-item">Category 3</a>
+            - Category.all.each do |category|
+              =link_to category.name, category_path(category), class: "list-group-item"
         .col-md-9
           = yield

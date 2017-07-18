@@ -9,10 +9,13 @@
         = link_to "Contact", contact_path
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
+        - if current_user.admin?
+          %li{ class: active?(admin_books_path) }
+            = link_to "Admin", admin_books_path
         %li
           = link_to "Logout", destroy_user_session_path, method: :delete
       - else
-        %li
+        %li{ class: active?(new_user_session_path) }
           = link_to "Sign in", new_user_session_path
-        %li
+        %li{ class: active?(new_user_registration_path) }
           = link_to "Sign up", new_user_registration_path

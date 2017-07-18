@@ -2,8 +2,17 @@
   .container
     .navbar-header
       =link_to "Book Shop", root_path, class: "navbar-brand"
-      %ul.nav.navbar-nav
-        %li{ class: active?(about_path) }
-          = link_to "About", about_path
-        %li{ class: active?(contact_path) }
-          = link_to "Contact", contact_path
+    %ul.nav.navbar-nav.navbar-left
+      %li{ class: active?(about_path) }
+        = link_to "About", about_path
+      %li{ class: active?(contact_path) }
+        = link_to "Contact", contact_path
+    %ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
+        %li
+          = link_to "Logout", destroy_user_session_path, method: :delete
+      - else
+        %li
+          = link_to "Sign in", new_user_session_path
+        %li
+          = link_to "Sign up", new_user_registration_path

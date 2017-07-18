@@ -32,6 +32,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+gem 'devise'
+gem 'devise-bootstrap-views'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -55,5 +58,6 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'html2haml'
+  gem "letter_opener"
 
 end

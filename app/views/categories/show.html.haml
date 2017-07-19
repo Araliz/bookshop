@@ -1,2 +1,6 @@
-= render partial: 'books/books', locals: {books: @books}
-= will_paginate @books, renderer: BootstrapPagination::Rails
+.row
+  .col-md-3
+    =render partial: 'layouts/categories_sidebar'
+  .col-md-9
+    = render partial: 'books/books', locals: {books: @books}
+    = will_paginate @books, renderer: BootstrapPagination::Rails

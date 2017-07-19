@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root 'books#index'
+  resources :addresses, except: [:index, :show, :destroy]
   get "about" => 'home#about'
   get "contact" => 'home#contact'
   resources :books, only: [:show, :index]

@@ -11,9 +11,17 @@
       - if user_signed_in?
         - if current_user.admin?
           %li{ class: active?(admin_books_path) }
-            = link_to "Admin", admin_books_path
-        %li
-          = link_to "Logout", destroy_user_session_path, method: :delete
+            = link_to "Adminstration panel", admin_books_path
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Signed in as #{current_user.email}
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to "Address settings", new_address_path(current_user)
+            %li.divider{:role => "separator"}
+            %li
+              = link_to "Logout", destroy_user_session_path, method: :delete
       - else
         %li{ class: active?(new_user_session_path) }
           = link_to "Sign in", new_user_session_path

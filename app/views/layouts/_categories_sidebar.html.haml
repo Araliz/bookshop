@@ -1,0 +1,3 @@
+.list-group
+  - Category.all.each do |category|
+    =link_to category.name, category_path(category), class: "list-group-item"

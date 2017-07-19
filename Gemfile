@@ -35,6 +35,8 @@ gem 'will_paginate-bootstrap'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'simple_form'
+gem 'ransack'
+
 
 
 # Use ActiveModel has_secure_password

@@ -1,6 +1,7 @@
 class Admin::BooksController < Admin::BaseController
   def index
-    @books = Book.all_books.paginate(page: params[:page], per_page: 30)
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).paginate(page: params[:page], per_page: 30)
   end
 
   def new

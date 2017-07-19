@@ -1,10 +1,16 @@
 = link_to "Add new book", new_admin_book_path, class: 'btn btn-default'
+.search-for
+  = search_form_for [:admin, @q] do |f|
+    = f.search_field :title_cont
+    = f.search_field :price_gt
+    = f.submit "Search", class: 'btn btn-default'
 %table.table.table-condensed
   %thead
     %tr
-      %th Title
-      %th Author
-      %th Price
+      %th= sort_link(@q, :title, "Title")
+      %th= sort_link(@q, :author, "Author")
+      %th= sort_link(@q, :price, "Price")
+      %th Category
       %th Action
   %tbody
     - @books.each do |book|
@@ -12,6 +18,7 @@
         %td= book.title
         %td= book.author
         %td= book.price
+        %td= book.category.name
         %td
           = link_to edit_admin_book_path(book) do
             %button.btn.btn-default

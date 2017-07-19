@@ -1,11 +1,11 @@
 = simple_form_for [:admin, @book] do |f|
-  = f.input :title, required: false
+  = f.input :title
   = f.input :author
   = f.input :price
   = f.input :publisher
   = f.input :language
-  = f.input :description, required: false
-  = f.association :category, required: false
+  = f.input :description
+  = f.association :category
   = image_tag  @book.cover.url(:thumb)
   = f.input :cover
   = f.submit

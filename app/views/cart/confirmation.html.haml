@@ -1,2 +1,28 @@
-%h1 Cart#confirmation
-%p Find me in app/views/cart/confirmation.html.haml
+%h1 Confirmation
+%table.table.table-striped
+  %thead
+    %th Product name
+    %th Quantity
+    %th Unit price
+    %th Full price
+  %tbody
+    - @cart.line_items.each do |line_item|
+      %tr
+        %td= link_to line_item.item_name, book_path(line_item.book)
+        %td= line_item.quantity
+        %td= number_to_currency line_item.unit_price
+        %td= number_to_currency line_item.full_price
+    %tr
+      %td
+        Delivery type: #{@cart.shipping_type.name}
+      %td
+      %td{:colspan => "2"}= number_to_currency @cart.shipping_type.cost
+    %tr
+      %td{:colspan => "4"}
+    %tr
+      %th Total price
+      %td
+      %td{:colspan => "2"}= number_to_currency @cart.total_cost
+= link_to finish_cart_path, method: :post, class: "btn btn-success btn-lg" do
+  %span.fa.fa-check
+  Accept

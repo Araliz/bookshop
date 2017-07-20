@@ -1,46 +1,26 @@
 class OrderMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.order_mailer.order_confirmation.subject
-  #
-  def order_confirmation
-    @greeting = "Hi"
+  def order_confirmation(order)
+    @order = order
 
-    mail to: "to@example.org"
+    mail to: order.user.email, subject: "Order confirmation"
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.order_mailer.order_in_progress.subject
-  #
-  def order_in_progress
-    @greeting = "Hi"
+  def order_in_progress(order)
+    @order = order
 
-    mail to: "to@example.org"
+    mail to: order.user.email, subject: "Order in progress"
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.order_mailer.order_shipped.subject
-  #
-  def order_shipped
-    @greeting = "Hi"
+  def order_shipped(order)
+    @order = order
 
-    mail to: "to@example.org"
+    mail to: order.user.email, subject: "Order shipped"
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.order_mailer.order_cancelled.subject
-  #
-  def order_cancelled
-    @greeting = "Hi"
+  def order_cancelled(order)
+    @order = order
 
-    mail to: "to@example.org"
+    mail to: order.user.email, subject: "Order canceleed"
   end
 end

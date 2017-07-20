@@ -2,9 +2,10 @@ class Order < ActiveRecord::Base
   include Statesman::Adapters::ActiveRecordQueries
   belongs_to :shipping_type
   belongs_to :user
+  has_one :order_address
+  accepts_nested_attributes_for :order_address
   has_many :line_items
   has_many :books, through: :line_items
-
   has_many :transitions, class_name: "OrderTransition", autosave: false
 
   # Initialize the state machine

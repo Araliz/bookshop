@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720112912) do
+ActiveRecord::Schema.define(version: 20170720141308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(version: 20170720112912) do
 
   add_index "line_items", ["book_id"], name: "index_line_items_on_book_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
+
+  create_table "order_addresses", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "city"
+    t.string   "zip_code"
+    t.string   "street"
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "order_addresses", ["order_id"], name: "index_order_addresses_on_order_id", using: :btree
 
   create_table "order_transitions", force: :cascade do |t|
     t.string   "to_state",                   null: false
@@ -117,6 +130,7 @@ ActiveRecord::Schema.define(version: 20170720112912) do
   add_foreign_key "addresses", "users"
   add_foreign_key "line_items", "books"
   add_foreign_key "line_items", "orders"
+  add_foreign_key "order_addresses", "orders"
   add_foreign_key "order_transitions", "orders"
   add_foreign_key "orders", "shipping_types"
   add_foreign_key "orders", "users"

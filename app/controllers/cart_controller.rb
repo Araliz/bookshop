@@ -5,9 +5,43 @@ class CartController < ApplicationController
   end
 
   def edit
+    user = current_user
+    @cart = current_cart
+    if @cart.order_address.blank?
+      unless user.address.nil?
+        @cart.build_order_address(
+          last_name: user.address.last_name,
+          first_name: user.address.first_name,
+          street: user.address.street,
+          city: user.address.city,
+          zip_code: user.address.zip_code
+        )
+      else
+        @cart.build_order_address
+      end
+    end
+  end
+
+  def update
+    @cart = current_cart
+    if @cart.update_attributes(cart_attributes)
+      @cart.update_attribute(:user, current_user)
+      redirect_to confirmation_cart_path
+    else
+      render action: :edit
+    end
   end
 
   def confirmation
+    @cart = current_cart
+  end
+
+  def finish
+    @cart = current_cart
+    @cart.transition_to :confirmed
+    session.delete(:order_id)
+    flash[:notice] = "Your order has been placed"
+    redirect_to root_path
   end
 
   def add_book
@@ -34,5 +68,20 @@ class CartController < ApplicationController
     end
     redirect_to :back, notice: "book removed from cart"
   end
+  private
+
+    def cart_attributes
+      params.require(:order).permit(
+        :shipping_type_id,
+        :comment,
+        :order_address_attributes => [
+          :first_name,
+          :last_name,
+          :city,
+          :zip_code,
+          :street
+        ]
+      )
+    end
 
 end

@@ -1,2 +1,15 @@
-%h1 Cart#edit
-%p Find me in app/views/cart/edit.html.haml
+%h1 Shipping address
+.row
+  .col-md-6
+    = simple_form_for @cart, url: cart_path do |f|
+      = f.simple_fields_for :order_address do |a|
+        = a.input :first_name
+        = a.input :last_name
+        = a.input :city
+        = a.input :zip_code
+        = a.input :street
+      = f.association :shipping_type, as: :select, prompt: nil
+      = f.input :comment
+      = button_tag class: "btn btn-success btn-lg" do
+        Confirm
+        = fa_icon "step-forward"

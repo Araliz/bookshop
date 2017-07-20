@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     member do
       post :add_book
       post :remove_book
+      get :confirmation
+      post :finish
     end
   end
   namespace :admin do

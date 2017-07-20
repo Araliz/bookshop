@@ -1,2 +1,26 @@
-%h1 Cart#show
-%p Find me in app/views/cart/show.html.haml
+%h1 Your cart
+- if @cart.line_items.empty?
+  %p Your cart is empty
+- else
+  %table.table.table-striped
+    %thead
+      %th Book
+      %th Quantity
+      %th Unit price
+      %th Full price
+      %th
+    %tbody
+      - @cart.line_items.each do |line_item|
+        %tr
+          %td= link_to line_item.item_name, book_path(line_item.book)
+          %td= line_item.quantity
+          %td= number_to_currency line_item.unit_price
+          %td= number_to_currency line_item.full_price
+          %td
+            = link_to remove_book_cart_path(book_id: line_item.book.id), method: :post do
+              %button.btn.btn-default                                                    |
+                =fa_icon "trash"
+  %p
+    = link_to edit_cart_path, class: "btn btn-success btn-lg" do
+      Check out
+      = fa_icon "step-forward"

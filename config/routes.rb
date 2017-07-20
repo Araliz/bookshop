@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'cart/show'
-
-  get 'cart/edit'
-
-  get 'cart/confirmation'
-
+  resource :cart, controller: "cart", only: [:show, :update, :edit] do
+    member do
+      post :add_book
+      post :remove_book
+    end
+  end
   namespace :admin do
     resources :books
   end

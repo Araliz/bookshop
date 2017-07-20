@@ -12,9 +12,8 @@
     %p= @book.language
     %h5.title-attr Price
     %h3{:style => "margin-top:0px;"}= number_to_currency @book.price
-    %button.btn.btn-success
-      %span.glyphicon.glyphicon-shopping-cart{:style => "margin-right:20px"}
-      Add to to cart
+    =link_to add_book_cart_path(book_id: @book.id) , method: :post, class: "btn btn-primary" do
+      =fa_icon "shopping-cart",text: "Add to cart"
     %h6
       =link_to "#" do
         =fa_icon "heart-o", text: "Add to wishlist"

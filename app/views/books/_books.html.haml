@@ -14,5 +14,5 @@
             %h3= number_to_currency book.price
             %h5{style: "margin-top:0; color:red"} Save 0$
 
-            =link_to "#", class: "btn btn-primary" do
+            =link_to add_book_cart_path(book_id: book.id) , method: :post, class: "btn btn-primary" do
               =fa_icon "shopping-cart",text: "Add to cart"

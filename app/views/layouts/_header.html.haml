@@ -8,6 +8,12 @@
       %li{ class: active?(contact_path) }
         = link_to "Contact", contact_path
     %ul.nav.navbar-nav.navbar-right
+      %li
+        = link_to cart_path do
+          = fa_icon "shopping-cart"
+          = current_cart.line_items.map { |e| e.quantity}.sum
+          products for
+          = number_to_currency current_cart.line_items.map { |e| e.full_price }.sum
       - if user_signed_in?
         - if current_user.admin?
           %li{ class: active?(admin_books_path) }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719145745) do
+ActiveRecord::Schema.define(version: 20170720112912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(version: 20170719145745) do
   add_index "line_items", ["book_id"], name: "index_line_items_on_book_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
 
+  create_table "order_transitions", force: :cascade do |t|
+    t.string   "to_state",                   null: false
+    t.text     "metadata",    default: "{}"
+    t.integer  "sort_key",                   null: false
+    t.integer  "order_id",                   null: false
+    t.boolean  "most_recent",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "order_transitions", ["order_id", "most_recent"], name: "index_order_transitions_parent_most_recent", unique: true, where: "most_recent", using: :btree
+  add_index "order_transitions", ["order_id", "sort_key"], name: "index_order_transitions_parent_sort", unique: true, using: :btree
+
   create_table "orders", force: :cascade do |t|
     t.text     "comment"
     t.integer  "shipping_type_id"
@@ -104,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170719145745) do
   add_foreign_key "addresses", "users"
   add_foreign_key "line_items", "books"
   add_foreign_key "line_items", "orders"
+  add_foreign_key "order_transitions", "orders"
   add_foreign_key "orders", "shipping_types"
   add_foreign_key "orders", "users"
 end

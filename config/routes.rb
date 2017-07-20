@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'cart/show'
+
+  get 'cart/edit'
+
+  get 'cart/confirmation'
+
   namespace :admin do
     resources :books
   end

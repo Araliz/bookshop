@@ -36,6 +36,7 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'simple_form'
 gem 'ransack'
+gem 'statesman', '~> 3.0'
 
 
 

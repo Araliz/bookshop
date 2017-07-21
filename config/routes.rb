@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :books
+    resources :orders, only: [:index, :show, :update]
   end
   devise_for :users
   root 'books#index'

@@ -5,12 +5,14 @@ class OrderStateMachine
  state :confirmed
  state :in_progress
  state :shipped
+ state :complete
  state :cancelled
+
 
  transition from: :new,           to: [:confirmed, :cancelled]
  transition from: :confirmed,     to: [:in_progress, :cancelled]
  transition from: :in_progress,   to: [:shipped, :cancelled]
- transition from: :shipped,       to: :cancelled
+ transition from: :shipped,       to: [:complete, :cancelled]
 
  after_transition(to: :confirmed) do |order, transition|
    OrderMailer.order_confirmation(order).deliver

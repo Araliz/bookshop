@@ -1,0 +1,12 @@
+%nav.nav.navbar-inverse.navbar-static-top
+  .container
+    .navbar-header
+      =link_to "Book Shop::Administration Panel", root_path, class: "navbar-brand"
+    %ul.nav.navbar-nav.navbar-left
+      %li{ class: active?(admin_books_path) }
+        = link_to "Books", admin_books_path
+      %li{ class: active?(admin_orders_path) }
+        = link_to "Orders", admin_orders_path
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        = link_to "Logout", destroy_user_session_path, method: :delete

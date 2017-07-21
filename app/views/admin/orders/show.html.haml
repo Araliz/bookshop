@@ -1,0 +1,54 @@
+%h1 Order details
+.row
+  .col-md-6
+    %table.table.table-striped
+      %thead
+        %th Title
+        %th Author
+        %th Quantity
+        %th Unit price
+        %th Full price
+      %tbody
+        - @order.line_items.each do |line_item|
+          %tr
+            %td= link_to line_item.item_name, book_path(line_item.book)
+            %td= line_item.book.author
+            %td= line_item.quantity
+            %td= number_to_currency line_item.unit_price
+            %td= number_to_currency line_item.full_price
+        %tr
+          %td
+            Delivery type: #{@order.shipping_type.name}
+          %td{:colspan => "2"}
+          %td{:colspan => "2"}= number_to_currency @order.shipping_type.cost
+        %tr
+          %td{:colspan => "5"}
+        %tr
+          %th Total cost
+          %td{:colspan => "3"}
+          %th{:colspan => "2"}= number_to_currency @order.total_cost
+  .col-md-6
+    %p
+      %strong Order address;
+    %address.address
+      = @order.order_address.first_name
+      = @order.order_address.last_name
+      %br/
+      = @order.order_address.street
+      %br/
+      = @order.order_address.zip_code
+      = @order.order_address.city
+    %p
+      %strong Comment:
+      = simple_format @order.comment
+.row
+  .col-md-6
+    = form_for [:admin, @order] do |f|
+      %select{:name => "state"}
+        -OrderStateMachine.states.each do |state_name|
+          %option{:value => state_name,
+            disabled: (true if !@order.can_transition_to?(state_name) && @order.current_state != state_name)}
+            #{state_name}
+      = f.submit "Change status"
+.margin-top
+  = link_to 'Back', admin_orders_path, class: "btn btn-default btn-lg"

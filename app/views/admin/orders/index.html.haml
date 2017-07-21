@@ -1,0 +1,25 @@
+%h1 Orders
+.margin-bottom
+  - if params[:state].nil?
+    = link_to "Show complete orders", admin_orders_path(state: :complete), class: "btn btn-primary btn-lg"
+  -else
+    = link_to "Remove complete orders", admin_orders_path, class: "btn btn-primary btn-lg"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Id
+      %th Created at
+      %th Status
+      %th Total price
+      %th
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td
+          \##{order.id}
+        %td= l order.created_at, format: :long
+        %td= order.current_state
+        %td= number_to_currency order.total_cost
+        %td= link_to "Edit", admin_order_path(order), class: "btn btn-default btn-xs"
+= will_paginate @orders, renderer: BootstrapPagination::Rails

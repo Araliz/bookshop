@@ -22,3 +22,11 @@
     %div{:style => "width:100%;border-top:1px solid silver"}
       %p{:style => "padding:15px;"}
         %small= @book.description
+  .col-sm-7
+    %p{style: "margin-top:10px" } Customer reviews
+    %div{:style => "width:100%;border-top:1px solid silver; margin-bottom: 10px"}
+    -if user_signed_in? && current_user.books.include?(@book) && !current_user.reviewed_this_book?(@book)
+      .review-block
+        .status-upload
+          = render partial: "reviews/reviews_form"
+    = render @reviews

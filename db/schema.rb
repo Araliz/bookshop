@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720141308) do
+ActiveRecord::Schema.define(version: 20170721154443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,19 @@ ActiveRecord::Schema.define(version: 20170720141308) do
   add_index "orders", ["shipping_type_id"], name: "index_orders_on_shipping_type_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+  end
+
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
   create_table "shipping_types", force: :cascade do |t|
     t.string   "name"
     t.decimal  "cost"
@@ -134,4 +147,6 @@ ActiveRecord::Schema.define(version: 20170720141308) do
   add_foreign_key "order_transitions", "orders"
   add_foreign_key "orders", "shipping_types"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "users"
 end

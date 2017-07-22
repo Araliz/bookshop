@@ -5,5 +5,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @reviews = Review.all.where(book_id: params[:id])
+    @review = current_user.reviews.build if user_signed_in?
   end
 end

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get "contact" => 'home#contact'
   resources :books, only: [:show, :index]
   resources :categories, only: [:show]
+  resources :reviews, only: [:create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

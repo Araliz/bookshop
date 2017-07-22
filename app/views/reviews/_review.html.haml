@@ -1,0 +1,33 @@
+.row
+  .col-sm-3
+    %img.img-rounded{:src => "http://dummyimage.com/60x60/666/ffffff&text=No+Image"}/
+    .review-block-name
+      = review.user.email
+    .review-block-date
+      = l review.created_at, format: :long
+      %br>/
+      = time_ago_in_words(review.created_at)
+      ago
+  .col-sm-9
+    -# .review-block-rate
+    -#   %button.btn.btn-warning.btn-xs{"aria-label" => "Left Align", :type => "button"}
+    -#     %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+    -#   %button.btn.btn-warning.btn-xs{"aria-label" => "Left Align", :type => "button"}
+    -#     %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+    -#   %button.btn.btn-warning.btn-xs{"aria-label" => "Left Align", :type => "button"}
+    -#     %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+    -#   %button.btn.btn-default.btn-grey.btn-xs{"aria-label" => "Left Align", :type => "button"}
+    -#     %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+    -#   %button.btn.btn-default.btn-grey.btn-xs{"aria-label" => "Left Align", :type => "button"}
+    -#     %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+    #star-rating{"data-score": review.rating}
+    .review-block-title= review.title
+    .review-block-description= review.content
+- unless review == @reviews.last
+  %hr/
+
+:javascript
+  $('#star-rating').raty({
+      path: '/assets',
+      readOnly:  true
+  });

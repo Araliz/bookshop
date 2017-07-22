@@ -55,63 +55,14 @@
 
 
 
-
-
-
-
-// .widget-area.blank {
-// background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-// -webkit-box-shadow: none;
-// -moz-box-shadow: none;
-// -ms-box-shadow: none;
-// -o-box-shadow: none;
-// box-shadow: none;
-// }
-// body .no-padding {
-// padding: 0;
-// }
-// .widget-area {
-// background-color: #fff;
-// -webkit-border-radius: 4px;
-// -moz-border-radius: 4px;
-// -ms-border-radius: 4px;
-// -o-border-radius: 4px;
-// border-radius: 4px;
-// -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
-// -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
-// -ms-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
-// -o-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
-// box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
-// float: left;
-// margin-top: 30px;
-// padding: 25px 30px;
-// position: relative;
-// width: 100%;
-// }
-// .status-upload {
-// background: none repeat scroll 0 0 #f5f5f5;
-// -webkit-border-radius: 4px;
-// -moz-border-radius: 4px;
-// -ms-border-radius: 4px;
-// -o-border-radius: 4px;
-// border-radius: 4px;
-// float: left;
-// width: 100%;
-// }
-// .status-upload form {
-// float: left;
-// width: 100%;
-// }
+// review form
 .status-upload  {
-// background: none repeat scroll 0 0 #fff;
 border: medium none;
 -webkit-border-radius: 4px 4px 0 0;
 -moz-border-radius: 4px 4px 0 0;
 -ms-border-radius: 4px 4px 0 0;
 -o-border-radius: 4px 4px 0 0;
 border-radius: 4px 4px 0 0;
-// color: #777777;
-// float: left;
 font-family: Lato;
 font-size: 14px;
 letter-spacing: 0.3px;
@@ -125,3 +76,41 @@ margin-bottom: 20px;
 .status-upload form textarea {
   height: 142px;
 }
+
+// Rating
+
+div.star-con {
+  width: 100%  ;
+  display: inline-block;
+}
+div.stars {
+  width: 384px  ;
+  margin: auto;
+}
+
+input.star { display: none; }
+
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+
+input.star:checked ~ label {
+  background:  #f0ad4e;
+  // transition: all .25s;
+}
+input.star:checked ~ label {
+  color:  #fff;
+}
+
+// input.star-5:checked ~ label.star:before {
+//   color: #FE7;
+//   text-shadow: 0 0 20px #952;
+// }
+
+// input.star-1:checked ~ label.star:before { color: #F62; }
+
+// label.star:hover { transform: rotate(-15deg) scale(1.3); }

@@ -8,10 +8,12 @@
           .caption
             %h4= book.title
             %h5= book.author
-            %p RAITINGS dasdasdac
-            %h4.pull-right
-              %strike= number_to_currency book.price
-            %h3{style: "margin-bottom:0"}= number_to_currency book.price
+            -5.times do |i|
+              %button.btn.btn-xs{class: star(book.average_rating, i), :type => "button"}
+                %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+            %h4{style: "margin-bottom:0;"}
+              %span= number_to_currency book.price
+              %strike{style: "float: right;"}= number_to_currency book.price
             %h5{style: "margin-top:0"}
               %p{style: "color:red"} Save 0$
 

@@ -22,7 +22,7 @@ default: &default
   pool: 5
   host: localhost
   username: araliz
-  password: matrac91
+  password: <%= ENV['BOOK_SHOP_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default

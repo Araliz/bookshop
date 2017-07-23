@@ -4,7 +4,7 @@
       .col-md-4
         .thumbnail
           =link_to book_path(book) do
-            =image_tag Faker::Placeholdit.image('140x200', 'jpg')
+            =image_tag book.cover.url(:thumb)
           .caption
             %h4= book.title
             %h5= book.author

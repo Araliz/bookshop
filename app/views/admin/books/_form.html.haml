@@ -1,7 +1,7 @@
-= simple_form_for [:admin, @book] do |f|
+= simple_form_for [:admin, @book], multiple: true do |f|
   = f.input :title
   = f.input :author
-  %p= "Old price: #{@book.old_price}" unless @book.old_price.nil?  
+  %p= "Old price: #{@book.old_price}" unless @book.old_price.nil?
   = f.input :price
   = f.input :publisher
   = f.input :language

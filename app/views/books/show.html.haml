@@ -1,6 +1,6 @@
 .row
   .col-md-3
-    =image_tag Faker::Placeholdit.image('240x360', 'jpg')
+    =image_tag @book.cover.url(:details)
   .col-md-5#book-info-top
     %h3= @book.title
     %h4 Autor: #{@book.author}

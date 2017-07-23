@@ -30,9 +30,15 @@ class CoverUploader < CarrierWave::Uploader::Base
   # end
   version :thumb do
     process resize_to_fit: [140, 200]
+    def default_url
+      "140x200.jpg"
+    end
   end
   version :details do
     process resize_to_fit: [240, 360]
+    def default_url
+      "240x360.jpg"
+    end
   end
 
   # Create different versions of your uploaded files:
@@ -42,9 +48,9 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_whitelist
+    %w(jpg jpeg png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

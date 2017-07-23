@@ -1,27 +1,9 @@
-=form_for @review do |f|
-  = hidden_field_tag "book_id", @book.id
-  -# = f.label :rating
-  -# .stars
-  -#   - (1..5).each do |i|
-  -#     = f.radio_button :rating,id: "star_#{i}"
-  -#     = label :rating, i ,class: "glyphicon glyphicon-star"
-  -# = f.text_field :title
-  -# = f.text_field :content
-  -# = f.submit "Add review", class: "btn btn-success green"
-  -#
-
-
 =simple_form_for @review do |f|
   = hidden_field_tag "book_id", @book.id
   .star-con
     .stars
       = f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b|
         = b.radio_button(class: "star") + b.label(class: "star btn btn-xs btn-default glyphicon glyphicon-star")
-
-  -# = f.input :rating
-
-
-  -# = f.collection_radio_buttons :rating, [[true, 'Yes'] ,[false, 'No']], :first, :last,label_html: {class: "glyphicon glyphicon-star"}
   = f.input :title
   = f.input :content
   = f.submit "Add review", class: "btn btn-success green"

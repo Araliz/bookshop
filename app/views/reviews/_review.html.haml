@@ -2,7 +2,7 @@
   .col-sm-3
     %img.img-rounded{:src => "http://dummyimage.com/60x60/666/ffffff&text=No+Image"}/
     .review-block-name
-      = review.user.email
+      = review.user.username
     .review-block-date
       = l review.created_at, format: :long
       %br>/

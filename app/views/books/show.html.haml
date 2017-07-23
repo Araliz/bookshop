@@ -18,7 +18,7 @@
       %h5.title-attr Price
       %h3{:style => "margin-top:0px;"}= number_to_currency @book.price
       %h5{style: "margin-top:0"}
-        %p{style: "color:red"}= "Save #{number_to_currency (@book.old_price - @book.price)} "
+        %p= "Save #{number_to_currency (@book.old_price - @book.price)} "
     -else
       %h5.title-attr Price
       %h3{:style => "margin-top:0px;"}= number_to_currency @book.price

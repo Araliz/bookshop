@@ -8,7 +8,10 @@ class User < ActiveRecord::Base
   has_many :books, through: :orders
   has_many :reviews
 
+  validates_presence_of :username
+  validates_uniqueness_of :username
 
+  
   def reviewed_this_book?(book)
     book.reviews.where("user_id = ?", self.id).any?
   end

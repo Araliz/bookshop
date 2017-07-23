@@ -24,6 +24,7 @@ class Admin::BooksController < Admin::BaseController
   def update
     @book = Book.find(params[:id])
     if @book.update_attributes(book_params)
+      @book.update_attribute(:old_price, @book.previous_changes[:price][0]) unless @book.previous_changes[:price].nil?
       redirect_to admin_books_path, notice: "Successful edit"
     else
       render :edit
@@ -45,6 +46,7 @@ class Admin::BooksController < Admin::BaseController
       :description,
       :category_id,
       :price,
+      :old_price,
       :cover,
       :publisher,
       :language

@@ -10,8 +10,20 @@
     %p= @book.publication_date
     %h5.title-attr Language
     %p= @book.language
-    %h5.title-attr Price
-    %h3{:style => "margin-top:0px;"}= number_to_currency @book.price
+
+    - if !@book.old_price.nil? && @book.price < @book.old_price
+      %h5.title-attr Old Price
+      %h3{:style => "margin-top:0px;"}
+        %strike= number_to_currency @book.old_price
+      %h5.title-attr Price
+      %h3{:style => "margin-top:0px;"}= number_to_currency @book.price
+      %h5{style: "margin-top:0"}
+        %p{style: "color:red"}= "Save #{number_to_currency (@book.old_price - @book.price)} "
+    -else
+      %h5.title-attr Price
+      %h3{:style => "margin-top:0px;"}= number_to_currency @book.price
+
+
     =link_to add_book_cart_path(book_id: @book.id) , method: :post, class: "btn btn-primary" do
       =fa_icon "shopping-cart",text: "Add to cart"
     %h6

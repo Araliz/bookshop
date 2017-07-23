@@ -13,9 +13,10 @@
                 %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
             %h4{style: "margin-bottom:0;"}
               %span= number_to_currency book.price
-              %strike{style: "float: right;"}= number_to_currency book.price
-            %h5{style: "margin-top:0"}
-              %p{style: "color:red"} Save 0$
+              - if !book.old_price.nil? && book.price < book.old_price
+                %strike{style: "float: right;"}= number_to_currency book.old_price
+                %h5{style: "margin-top:0"}
+                  %p{style: "color:red"}= "Save #{number_to_currency (book.old_price - book.price)}"
 
             =link_to add_book_cart_path(book_id: book.id) , method: :post, class: "btn btn-primary" do
               =fa_icon "shopping-cart",text: "Add to cart"

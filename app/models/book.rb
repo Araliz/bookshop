@@ -10,8 +10,9 @@ class Book < ActiveRecord::Base
 
   #postgres default doesn't sort .all by id
   default_scope { order('id ASC') }
-  
+
   def average_rating
     self.reviews.average(:rating).to_f
   end
+
 end

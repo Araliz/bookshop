@@ -1,3 +1,8 @@
+User.create! username: "Admin", email: "admin@admin.com", password: "adminadmin", password_confirmation: "adminadmin", admin: true
+User.create! username: "Foobar", email: "foo@bar.com", password: "foobar", password_confirmation: "foobar"
+
+ShippingType.create! name: "Postal Service", cost: 4.99
+ShippingType.create! name: "Express Delivery", cost: 8.99 	
 8.times do
   Category.create! name: Faker::Book.genre.capitalize
 end

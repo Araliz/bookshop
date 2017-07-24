@@ -1,7 +1,6 @@
 .row
-  .col-md-3
-    =render partial: 'layouts/settings_sidebar'
-  .col-md-9
+  =render partial: 'layouts/profile_sidebar'
+  .col-md-9.profile-content
     = bootstrap_devise_error_messages!
     .panel.panel-default.devise-bs
       .panel-heading

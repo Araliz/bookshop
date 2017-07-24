@@ -14,10 +14,20 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root 'books#index'
-  resources :addresses, except: [:index, :show, :destroy]
   get "about" => 'home#about'
   get "contact" => 'home#contact'
-  resources :books, only: [:show, :index]
+  resources :users, only: [:show] do
+    resources :addresses, except: [:index, :show, :destroy]
+    member do
+      get :orders
+      get 'orders/:order_id', to: 'users#order_show', as: 'order'
+    end
+  end
+  resources :books, only: [:show, :index] do
+    collection do
+      match 'search' => 'books#search', via: [:get, :post], as: :search
+    end
+  end
   resources :categories, only: [:show]
   resources :reviews, only: [:create, :destroy]
 

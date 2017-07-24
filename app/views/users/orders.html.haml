@@ -1,0 +1,18 @@
+.row
+  =render partial: 'layouts/profile_sidebar'
+  .col-md-9.profile-content
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Created at
+          %th Status
+          %th Total price
+          %th
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td= l order.created_at, format: :long
+            %td= order.current_state
+            %td= number_to_currency order.total_cost
+            %td= link_to "Show", order_user_path(current_user, order), class: "btn btn-default btn-xs"
+    = will_paginate @orders, renderer: BootstrapPagination::Rails

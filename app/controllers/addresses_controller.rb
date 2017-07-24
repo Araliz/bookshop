@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
     if current_user.address.nil?
       @address = current_user.build_address
     else
-      redirect_to edit_address_path(current_user)
+      redirect_to edit_user_address_path(current_user, current_user.address)
     end
   end
 

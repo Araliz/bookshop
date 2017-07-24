@@ -100,17 +100,98 @@ label.star {
 
 input.star:checked ~ label {
   background:  #f0ad4e;
-  // transition: all .25s;
 }
 input.star:checked ~ label {
   color:  #fff;
 }
 
-// input.star-5:checked ~ label.star:before {
-//   color: #FE7;
-//   text-shadow: 0 0 20px #952;
+// /* Profile container */
+// .profile {
+//   margin: 20px 0;
 // }
+//
+// /* Profile sidebar */
+// .profile-sidebar {
+//   padding: 20px 0 10px 0;
+//   background: #fff;
+// }
+.profile-margin{
+padding:0 0 0 15px;
+}
 
-// input.star-1:checked ~ label.star:before { color: #F62; }
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
 
-// label.star:hover { transform: rotate(-15deg) scale(1.3); }
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-usermenu {
+  margin-top: 30px;
+  padding:0px !important;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* order Content */
+.profile-content {
+  padding: 20px;
+  background: #F6F9FB;
+  min-height: 460px;
+}

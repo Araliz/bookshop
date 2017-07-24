@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  before_action :set_global_search_variable
+
   protect_from_forgery with: :exception
   helper_method :current_cart
 
@@ -23,6 +25,9 @@ class ApplicationController < ActionController::Base
     return cart
   end
 
+  def set_global_search_variable
+    @q = Book.search(params[:q])
+  end
 
   protected
 

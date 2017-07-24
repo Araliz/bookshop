@@ -1,0 +1,45 @@
+.col-md-3.profile-margin
+  .profile-sidebar
+    / SIDEBAR USERPIC
+    .profile-userpic
+      %p USER AVATAR
+    / SIDEBAR USER TITLE
+    .profile-usertitle
+      .profile-usertitle-name
+        %span.hidden-xs= current_user.username
+      .profile-usertitle-job
+    / END SIDEBAR USER TITLE
+    / SIDEBAR MENU
+    .profile-usermenu
+      %ul.nav
+        %li{class: active?(edit_user_registration_path(current_user))}
+          =link_to  edit_user_registration_path(current_user) do
+            %i.glyphicon.glyphicon-home
+            %span.hidden-xs
+              Personal
+              %span
+        %li{class: params[:controller] == "addresses" && params[:action] == "edit" ? active?(edit_user_address_path(current_user, current_user.address)) : active?(new_user_address_path(current_user))  }
+          =link_to  new_user_address_path(current_user) do
+            %i.glyphicon.glyphicon-user
+            %span.hidden-xs
+              Delivery Address
+              %span
+        %li{class: params[:controller] == "users" && params[:action] == "order_show" ? active?(order_user_path(current_user, params[:order_id])) : active?(orders_user_path(current_user))}
+          =link_to orders_user_path(current_user) do
+            %i.glyphicon.glyphicon-ok
+            %span.hidden-xs
+              Orders
+              %span
+        %li
+          %a{:href => "#"}
+            %i.glyphicon.glyphicon-flag
+            %span.hidden-xs
+              My Wishlist
+              %span
+        %li
+          = link_to cart_path do
+            %i.glyphicon.glyphicon-shopping-cart
+            %span.hidden-xs
+              Shopping Bag
+              %span
+    / END MENU

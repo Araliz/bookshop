@@ -1,0 +1,46 @@
+.row
+  =render partial: 'layouts/profile_sidebar'
+  .col-md-9.profile-content
+    .row
+      .col-md-9
+        %table.table.table-striped
+          %thead
+            %th Title
+            %th Author
+            %th Quantity
+            %th Unit price
+            %th Full price
+          %tbody
+            - @order.line_items.each do |line_item|
+              %tr
+                %td= link_to line_item.item_name, book_path(line_item.book)
+                %td= line_item.book.author
+                %td= line_item.quantity
+                %td= number_to_currency line_item.unit_price
+                %td= number_to_currency line_item.full_price
+            %tr
+              %td
+                Delivery type: #{@order.shipping_type.name}
+              %td{:colspan => "2"}
+              %td{:colspan => "2"}= number_to_currency @order.shipping_type.cost
+            %tr
+              %td{:colspan => "5"}
+            %tr
+              %th Total cost
+              %td{:colspan => "3"}
+              %th{:colspan => "2"}= number_to_currency @order.total_cost
+      .col-md-3
+        %p
+          %strong Order address;
+        %address.address
+          = @order.order_address.first_name
+          = @order.order_address.last_name
+          %br/
+          = @order.order_address.street
+          %br/
+          = @order.order_address.zip_code
+          = @order.order_address.city
+        %p
+          %strong Comment:
+          = simple_format @order.comment
+    = link_to 'Back', :back , class: "btn btn-default btn-lg"

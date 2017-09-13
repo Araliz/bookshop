@@ -10,6 +10,6 @@
         = a.input :street
       = f.association :shipping_type, as: :select, prompt: nil
       = f.input :comment
-      = button_tag class: "btn btn-success btn-lg" do
+      = button_tag class: "btn btn-success btn-lg", title: "confirm" do
         Confirm
         = fa_icon "step-forward"

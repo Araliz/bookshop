@@ -2,14 +2,14 @@
   .row
     - slice.each do |book|
       .col-md-4
-        .thumbnail
+        %div{class: "thumbnail",:id => "book-#{book.id}"}
           =link_to book_path(book) do
             =image_tag book.cover.url(:thumb)
           .caption
             %h4= book.title
             %h5= book.author
             -5.times do |i|
-              %button.btn.btn-xs{class: star(book.average_rating, i)}
+              %button.btn.btn-xs{class: star(average_rating(book), i)}
                 %span.glyphicon.glyphicon-star
             %h4{style: "margin-bottom:0;"}
               %span= number_to_currency book.price

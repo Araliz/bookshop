@@ -18,13 +18,13 @@
       %li
         = link_to cart_path do
           = fa_icon "shopping-cart"
-          = current_cart.line_items.map { |e| e.quantity}.sum
-          products for
+          = pluralize(current_cart.line_items.map { |e| e.quantity}.sum, 'product')
+          for
           = number_to_currency current_cart.line_items.map { |e| e.full_price }.sum
       - if user_signed_in?
         - if current_user.admin?
           %li{ class: active?(admin_books_path) }
-            = link_to "Adminstration panel", admin_books_path
+            = link_to "Administration panel", admin_books_path
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Signed in as #{current_user.username}

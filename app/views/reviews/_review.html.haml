@@ -1,20 +1,21 @@
-.row
-  .col-sm-3
-    %img.img-rounded{:src => "http://dummyimage.com/60x60/666/ffffff&text=No+Image"}/
-    .review-block-name
-      = review.user.username
-    .review-block-date
-      = l review.created_at, format: :long
-      %br>/
-      = time_ago_in_words(review.created_at)
-      ago
-  .col-sm-9
-    .review-block-rate
-      -5.times do |i|
-        %button.btn.btn-xs{class: star(review.rating, i), :type => "button"}
-          %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
-    #star-rating{"data-score": review.rating}
-    .review-block-title= review.title
-    .review-block-description= review.content
-- unless review == @reviews.last
-  %hr/
+%div{:id => "review-#{review.id}"}
+  .row
+    .col-sm-3
+      %img.img-rounded{:src => "http://dummyimage.com/60x60/666/ffffff&text=No+Image"}/
+      .review-block-name
+        = review.user.username
+      .review-block-date
+        = l review.created_at, format: :long
+        %br>/
+        = time_ago_in_words(review.created_at)
+        ago
+    .col-sm-9
+      .review-block-rate
+        -5.times do |i|
+          %button.btn.btn-xs{class: star(review.rating, i), :type => "button"}
+            %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+      #star-rating{"data-score": review.rating}
+      .review-block-title= review.title
+      .review-block-description= review.content
+  - unless review == @reviews.last
+    %hr/

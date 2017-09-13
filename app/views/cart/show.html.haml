@@ -17,10 +17,10 @@
           %td= number_to_currency line_item.unit_price
           %td= number_to_currency line_item.full_price
           %td
-            = link_to remove_book_cart_path(book_id: line_item.book.id), method: :post do
+            = link_to remove_book_cart_path(book_id: line_item.book.id),{ method: :post, title: 'delete'} do
               %button.btn.btn-default                                                    |
                 =fa_icon "trash"
   %p
-    = link_to edit_cart_path, class: "btn btn-success btn-lg" do
+    = link_to edit_cart_path, class: "btn btn-success btn-lg",title: 'check out' do
       Check out
       = fa_icon "step-forward"

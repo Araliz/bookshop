@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root 'books#index'
   get "about" => 'home#about'
   get "contact" => 'home#contact'
+  get "index" => 'home#index'
   resources :users, only: [:show] do
     resources :addresses, except: [:index, :show, :destroy]
     member do
